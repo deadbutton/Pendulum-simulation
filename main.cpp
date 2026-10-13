@@ -28,9 +28,9 @@ int main()
     c.setOrigin({ threadLength, threadLength });
     c.setPosition({ 400.f, 0.f });
 
-    c.setFillColor(sf::Color::Transparent);   // без заливки
-    c.setOutlineColor(sf::Color::Black);      // цвет линии
-    c.setOutlineThickness(1.f);               // толщина линии
+    c.setFillColor(sf::Color::Transparent);
+    c.setOutlineColor(sf::Color::Black); 
+    c.setOutlineThickness(1.f); 
 
     sf::Clock clock;
 
@@ -79,7 +79,6 @@ int main()
 
                 // Колебание началось справа
                 if (startPos.x > 400.f) {
-                    // Грузик движется от начальной координаты до конечной так, что эти координаты равноудаленны от центра равновесия
                     if (x0 > 800.f - startPos.x) {
                         x0 -= speed;
                         circle.setPosition({ x0, sqrt(threadLength * threadLength - (x0 - 400.f) * (x0 - 400.f)) });
@@ -91,7 +90,6 @@ int main()
                             speed = speed + g * dt;
                         }
                     }
-                    // Меняем начало колебание на лево для периодичности
                     else {
                         startPos.x = 800.f - startPos.x;
                         speed = 0;
@@ -99,7 +97,6 @@ int main()
                 }
                 // Колебание началось слева
                 else if (startPos.x < 400.f) {
-                    // Грузик движется от начальной координаты до конечной так, что эти координаты равноудаленны от центра равновесия
                     if (x0 < 800.f - startPos.x) {
                         x0 += speed;
                         circle.setPosition({ x0, sqrt(threadLength * threadLength - (x0 - 400.f) * (x0 - 400.f)) });
@@ -111,7 +108,6 @@ int main()
                             speed = speed + g * dt;
                         }
                     }
-                    // // Меняем начало колебание на право для периодичности
                     else {
                         startPos.x = 800.f - startPos.x;
                         speed = 0;
